@@ -959,3 +959,5 @@
 #############################
 # For overlays
 /second_stage_resources/overlay_remounter u:object_r:overlay_remounter_exec:s0
+
+/data/system_ce/[0-9]+/lunar_backup(/.*)? u:object_r:lunar_backup_staging_file:s0

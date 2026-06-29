@@ -1,0 +1,19 @@
+# Copyright (C) 2024-2026 Lunaris AOSP
+# SPDX-License-Identifier: Apache-2.0
+type lunar_backup_app, domain, coredomain;
+app_domain(lunar_backup_app)
+
+# Normal Android UI, document picker and package installer APIs.
+allow lunar_backup_app app_api_service:service_manager find;
+allow lunar_backup_app lunar_backup_service:service_manager find;
+
+# PackageInstaller sessions return FDs, not arbitrary filesystem access.
+allow lunar_backup_app apk_tmp_file:file { getattr write };
+
+# Storage Access Framework may return an AppFuse descriptor.
+allow lunar_backup_app vold:fd use;
+allow lunar_backup_app fuse_device:chr_file { read write };
+
+# No private data access for other apps; the broker checks package eligibility.
+neverallow lunar_backup_app installd_service:service_manager find;
+neverallow lunar_backup_app lunar_backup_staging_file:{ dir file } *;

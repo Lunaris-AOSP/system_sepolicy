@@ -205,6 +205,7 @@ var (
 		"android.system.vold.IVold/default":                                   []string{"vold_native_service_fuzzer"},
 		"ambient_context":                                                     EXCEPTION_NO_FUZZER,
 		"app_binding":                                                         EXCEPTION_NO_FUZZER,
+		"lunar_backup":                                                        EXCEPTION_NO_FUZZER,
 		"app_function":                                                        EXCEPTION_NO_FUZZER,
 		"app_hibernation":                                                     EXCEPTION_NO_FUZZER,
 		"app_integrity":                                                       EXCEPTION_NO_FUZZER,

@@ -243,3 +243,7 @@ neverallow installd {
     -servicemanager
     userdebug_or_eng(`-su')
 }:binder call;
+
+# LunarBackup passes regular staging FDs; installd does not browse shared storage.
+allow installd system_server:fd use;
+allow installd lunar_backup_staging_file:file { read write getattr setattr };

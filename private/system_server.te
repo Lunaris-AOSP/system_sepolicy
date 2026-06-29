@@ -1740,3 +1740,8 @@ neverallow {
   -system_server
   -shell
 } power_debug_prop:property_service set;
+
+# CE-only staging bridges client descriptors to installd. Never exposed to apps.
+allow system_server lunar_backup_staging_file:dir create_dir_perms;
+allow system_server lunar_backup_staging_file:file create_file_perms;
+type_transition system_server system_data_file:dir lunar_backup_staging_file "lunar_backup";
